@@ -1,0 +1,1 @@
+A simple cat app project using Python with the Django framework. I am using https://api-ninjas.com/api/cats to get my cat api.

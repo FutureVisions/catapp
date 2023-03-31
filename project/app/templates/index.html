@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=d'evice-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/cerulean/bootstrap.min.css"
+    integrity="sha512-dQLT/B7byn2LjN/DN4zeBKpwGV6qbidV0XiMRWQOL7TGrV7FkZFldkGG+DGMU+CQnMTcRZlUI7GMWt1j6akNew=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="background">
+    <nav id="navi">Cat Information</nav>
+    <img src="{% static 'css/images/cat.png' %}" id="cat">
+    <br><br>
+    <div id="body">
+      <form method="post">
+        {% csrf_token %}
+        <div class=" input-group">
+          <input type="text" class="form-control" name="name" placeholder="enter cat breed.">
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </div>
+          <br> <br>
+          <div class="row">
+            {% for i in response %}
+            <div class="col d-flex justify-content-center">
+              <div class=" card text-white bg-light mb-6">
+                <div class=" card-body">
+                  <h4><span class="badge badge-primary">name :</span> {{i.name}}</h4>
+                  <h4><span class="badge badge-primary">length :</span> {{i.length}}</h4>
+                  <h4><span class="badge badge-primary">origin :</span> {{i.origin}}</h4>
+                  <h4><span class="badge badge-primary">family friendly :</span> {{i.family_friendly}}</h4>
+                  <h4><span class="badge badge-primary">shedding :</span> {{i.shedding}}</h4>
+                  <h4><span class="badge badge-primary">general health :</span> {{i.general_health}}</h4>
+                  <h4><span class="badge badge-primary">playfulness :</span> {{i.playfulness}}</h4>
+                  <h4><span class="badge badge-primary">children friendly :</span> {{i.children_friendly}}</h4>
+                  <h4><span class="badge badge-primary">grooming :</span> {{i.grooming}}</h4>
+                  <h4><span class="badge badge-primary">intelligence :</span> {{i.intelligence}}</h4>
+                  <h4><span class="badge badge-primary">min life expectancy :</span> {{i.min_life_expectancy}}</h4>
+                  <h4><span class="badge badge-primary">max life expectancy :</span> {{i.max_life_expectancy}}</h4>
+                  <h4><span class="badge badge-primary">minimum weight :</span> {{i.min_weight}}</h4>
+                  <h4><span class="badge badge-primary">maximum weight :</span> {{i.max_weight}}</h4>
+                  <img src="{{i.image_link}}" alt="image" height="300px" width="300px">
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
